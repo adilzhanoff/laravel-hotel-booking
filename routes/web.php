@@ -141,6 +141,7 @@ Route::get('admin/users/role/{role}', [
 ])->middleware('admin');
 
 // User
+// Rooms
 Route::get(
     '/user', 'App\Http\Controllers\UserController@index'
 )->name('user.index')->middleware('user');
@@ -148,3 +149,17 @@ Route::get(
 Route::get(
     '/user/{room}', 'App\Http\Controllers\UserController@show'
 )->name('user.show')->middleware('user');
+
+// Balance
+Route::get(
+    '/user/{user}/balance', 'App\Http\Controllers\UserBalanceController@index'
+)->name('user.balance.index')->middleware('user');
+
+Route::match(['put', 'patch'], '/user/{user}/balance', [
+    'uses' => 'App\Http\Controllers\UserBalanceController@update',
+    'as' => 'user.balance.update'
+])->middleware('user');
+
+Route::post(
+    '/user/{user}/balance', 'App\Http\Controllers\UserBalanceController@reset'
+)->name('user.balance.reset')->middleware('user');

@@ -60,7 +60,17 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
+                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.balance', Auth::user()->id) }}">
+                                        {{ __('Add Balance') }}
+                                    </a>
+                                </div> --}}
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.balance.index', Auth::user()->id) }}">
+                                        {{ __('My Balance') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -82,5 +92,11 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        $(function(){
+            $('.alert-success').fadeOut(3000);
+        });
+    </script>
 </body>
 </html>

@@ -32,6 +32,13 @@
                             <label>Role</label>
                             <input type="text" value="{{ $user->role->name }}" name="role" class="form-control" disabled>
                         </div>
+                        <label class="row">Balance</label>
+                        <div class="row input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="number" value="{{ $user->balance }}" name="balance" class="form-control" disabled>
+                        </div>
                         <?php
                             $room_ids = array();
                         ?>

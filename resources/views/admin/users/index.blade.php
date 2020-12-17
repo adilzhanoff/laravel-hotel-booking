@@ -71,6 +71,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Balance, $</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -80,6 +81,7 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->balance }}</td>
                     <td class="table-buttons">
                         <a href="{{ route('admin.users.show', $user) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                         <form class="form-delete" action="{{ route('admin.users.destroy', $user) }}" method="post">

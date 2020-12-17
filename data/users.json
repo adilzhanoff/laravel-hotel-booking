@@ -1,11 +1,11 @@
 [
   {
-    "name": "User",
+    "name": "User Userov",
     "email": "user@hotmail.com",
     "role_id": 1
   },
   {
-    "name": "Admin",
+    "name": "Admin Adminov",
     "email": "admin@hotmail.com",
     "role_id": 2
   }

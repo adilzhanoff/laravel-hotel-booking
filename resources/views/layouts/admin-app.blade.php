@@ -94,5 +94,11 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        $(function(){
+            $('.alert-success').fadeOut(3000);
+        });
+    </script>
 </body>
 </html>

@@ -15,6 +15,7 @@ class AddForeignToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')->default(1)->constrained();
+            $table->float('balance')->default(0.00);
         });
     }
 

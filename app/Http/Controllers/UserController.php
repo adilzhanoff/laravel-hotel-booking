@@ -16,7 +16,7 @@ class UserController extends Controller
         $categories = Category::all();
         $views = View::all();
         return view('user.index', compact([
-            'rooms', 'categories', 'views'
+            'rooms', 'categories', 'views',
         ]));
     }
 
@@ -25,6 +25,8 @@ class UserController extends Controller
         $room = Room::find($id);
         $categories = Category::all();
         $views = View::all();
-        return view('user.show', compact(['room', 'categories', 'views']));
+        return view('user.show', compact([
+            'room', 'categories', 'views',
+        ]));
     }
 }
