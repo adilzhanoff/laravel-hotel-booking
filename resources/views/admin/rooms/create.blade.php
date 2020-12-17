@@ -46,6 +46,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <label class="mb-2">Hourly Rate</label>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="number" name="rate" value="{{ old('rate') }}" class="form-control">
+                        </div>
                         <button type="submit" class="btn btn-primary mr-4">Add Room</button>
                         <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary">Back</a>
                     </form>

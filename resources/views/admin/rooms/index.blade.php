@@ -81,7 +81,7 @@
         </div>
     @endif
 
-    <table class="table table-striped mt-3">
+    <table class="table table-striped table-bordered mt-3">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -89,6 +89,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Category</th>
                 <th scope="col">View</th>
+                <th scope="col">Hourly Rate, $</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -100,6 +101,7 @@
                     <td>{{ $room->description }}</td>
                     <td>{{ $categories->where('id', $room->category_id)->first()->name }}</td>
                     <td>{{ $views->where('id', $room->view_id)->first()->name }}</td>
+                    <td>{{ $room->rate }}</td>
                     <td class="table-buttons">
                         <a href="{{ route('admin.rooms.show', $room) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                         <a href="{{ route('admin.rooms.edit', $room) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>

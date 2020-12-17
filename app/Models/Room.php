@@ -12,7 +12,7 @@ class Room extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number', 'description', 'category_id', 'view_id'
+        'number', 'description', 'category_id', 'view_id', 'rate'
     ];
 
     public function users() {

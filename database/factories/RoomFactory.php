@@ -28,6 +28,7 @@ class RoomFactory extends Factory
             'description' => $this->faker->sentence(7),
             'category_id' => Category::pluck('id')->random(),
             'view_id' => View::pluck('id')->random(),
+            'rate' => $this->faker->numberBetween($min = 10, $max = 100)
         ];
     }
 }

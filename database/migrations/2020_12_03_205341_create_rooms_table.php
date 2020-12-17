@@ -19,6 +19,7 @@ class CreateRoomsTable extends Migration
             $table->text('description');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('view_id')->constrained();
+            $table->integer('rate');
             $table->timestamps();
         });
     }

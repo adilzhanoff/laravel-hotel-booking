@@ -60,7 +60,8 @@ class RoomController extends Controller
             'number' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'view_id' => 'required'
+            'view_id' => 'required',
+            'rate' => 'required',
         ]);
 
         try {
@@ -68,7 +69,8 @@ class RoomController extends Controller
                 'number' => $request->get('number'),
                 'description' => $request->get('description'),
                 'category_id' => $request->get('category_id'),
-                'view_id' => $request->get('view_id')
+                'view_id' => $request->get('view_id'),
+                'rate' => $request->get('rate'),
             ]);
             $room->save();
         } catch (\Exception $e) {
@@ -125,7 +127,8 @@ class RoomController extends Controller
             'number' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'view_id' => 'required'
+            'view_id' => 'required',
+            'rate' => 'required'
         ]);
 
         try {
@@ -136,6 +139,7 @@ class RoomController extends Controller
             $room->description = $request->get('description');
             $room->category_id = $request->get('category_id');
             $room->view_id = $request->get('view_id');
+            $room->rate = $request->get('rate');
             $room->save();
         } catch (\Exception $e) {
             if ($e->getCode() == 23000) {

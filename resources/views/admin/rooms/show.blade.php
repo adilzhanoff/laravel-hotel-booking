@@ -40,6 +40,13 @@
                                     <option>{{ $views->where('id', $room->view_id)->first()->name }}</option>
                             </select>
                         </div>
+                        <label class="mb-2">Hourly Rate</label>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="number" name="rate" value="{{ $room->rate }}" class="form-control" disabled>
+                        </div>
                         <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary">Back</a>
                 </div>
             </div>
