@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin-app')
 
 @section('title', 'Add Room')
 
@@ -53,8 +53,8 @@
                             </div>
                             <input type="number" name="rate" value="{{ old('rate') }}" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary mr-4">Add Room</button>
-                        <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary">Back</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary"><i class="fa fa-backward" aria-hidden="true"></i></a>
                     </form>
                 </div>
             </div>

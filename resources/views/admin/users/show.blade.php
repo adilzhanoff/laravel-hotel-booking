@@ -61,7 +61,7 @@
                                 @endif
                             @endforeach
                         </div>
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary mt-2">Back</a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary mt-2"><i class="fa fa-backward" aria-hidden="true"></i></a>
                     </form>
                 </div>
             </div>

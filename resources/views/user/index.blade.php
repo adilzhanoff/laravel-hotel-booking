@@ -100,7 +100,8 @@
                     <td>{{ $views->where('id', $room->view_id)->first()->name }}</td>
                     <td>{{ $room->rate }}</td>
                     <td class="table-buttons">
-                        <a href="{{ route('user.show', $room) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('user.show', $room->id) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                        {{-- <a href="{{ route('user.reserve'), $room->id}}" class="btn btn-primary"><i class="fa fa-bed" aria-hidden="true"></i></a> --}}
                     </td>
                 </tr>
             @endforeach

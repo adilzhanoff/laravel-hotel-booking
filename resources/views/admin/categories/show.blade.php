@@ -24,7 +24,7 @@
                             <label>Name</label>
                             <input type="text" name="name" value="{{ $category->name }}" class="form-control" disabled>
                         </div>
-                        <a href="{{ route('admin.categories.index') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('admin.categories.index') }}" class="btn btn-primary"><i class="fa fa-backward" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

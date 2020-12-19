@@ -29,4 +29,8 @@ class UserController extends Controller
             'room', 'categories', 'views',
         ]));
     }
+
+    public function reserve($id) {
+        return view('user.reserve');
+    }
 }

@@ -28,7 +28,7 @@
                             <input type="text" name="name" value="{{ $category->name }}" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary mr-4">Edit Category</button>
-                        <a href="{{ route('admin.categories.index') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('admin.categories.index') }}" class="btn btn-primary"><i class="fa fa-backward" aria-hidden="true"></i></a>
                     </form>
                 </div>
             </div>

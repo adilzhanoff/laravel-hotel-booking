@@ -26,8 +26,8 @@
                             <label>Name</label>
                             <input type="text" name="name" value="{{ old('name') }}" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary mr-4">Add View</button>
-                        <a href="{{ route('admin.views.index') }}" class="btn btn-primary">Back</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <a href="{{ route('admin.views.index') }}" class="btn btn-primary"><i class="fa fa-backward" aria-hidden="true"></i></a>
                     </form>
                 </div>
             </div>

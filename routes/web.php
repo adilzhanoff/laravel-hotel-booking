@@ -150,6 +150,10 @@ Route::get(
     '/user/{room}', 'App\Http\Controllers\UserController@show'
 )->name('user.show')->middleware('user');
 
+/* Route::get(
+    '/user/{room}/reserve', 'App\Http\Controllers\UserController@reserve'
+)->name('user.reserve')->middleware('user'); */
+
 // Balance
 Route::get(
     '/user/{user}/balance', 'App\Http\Controllers\UserBalanceController@index'

@@ -47,7 +47,7 @@
                             </div>
                             <input type="number" name="rate" value="{{ $room->rate }}" class="form-control" disabled>
                         </div>
-                        <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary"><i class="fa fa-backward" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
