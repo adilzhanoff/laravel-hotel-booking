@@ -31,6 +31,10 @@ class UserController extends Controller
         ]));
     }
 
+    public function attach() {
+
+    }
+
     public function book(Request $request, $id) {
         $request->validate([
             'start' => 'required|before:'.$request->finish,
@@ -42,26 +46,27 @@ class UserController extends Controller
         $finish = strtotime($request->finish);
         $time = ceil(abs($finish - $start) / 60 / 60);
         $totalPrice = $time * $room->rate;
-        /*
-        Get all rooms with $id room_id 
-        */
+        // Get all rooms with $id room_id
         $records = Room::find(1)->users->all();
-        /*
-        Check if there are any datetime intersects
-        */
         $flags = array();
-        foreach ($records as $record) {
-            $pivot_start = strtotime($record->pivot->start);
-            $pivot_finish = strtotime($record->pivot->finish);
-            array_push(
-                $flags,
-                !array_filter(array(
-                    $pivot_start <= $start && $start <= $pivot_finish,
-                    $pivot_start <= $finish && $finish <= $pivot_finish,
-                    $start <= $pivot_start && $pivot_start <= $finish,
-                    $start <= $pivot_finish && $pivot_finish <= $finish
-                )
-            ));
+        // Check if there are no users who booked this room
+        if (!empty($records)) {
+            // Check if there are any datetime intersects
+            foreach ($records as $record) {
+                $pivot_start = strtotime($record->pivot->start);
+                $pivot_finish = strtotime($record->pivot->finish);
+                array_push(
+                    $flags,
+                    !array_filter(array(
+                        $pivot_start <= $start && $start <= $pivot_finish,
+                        $pivot_start <= $finish && $finish <= $pivot_finish,
+                        $start <= $pivot_start && $pivot_start <= $finish,
+                        $start <= $pivot_finish && $pivot_finish <= $finish
+                    )
+                ));
+            }
+        } else {
+            $flags = [true];
         }
         if (array_filter($flags) == $flags && $flags) {
             if ($totalPrice > auth()->user()->balance) {
