@@ -86,6 +86,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Category</th>
                 <th scope="col">View</th>
+                <th scope="col">Hourly Rate, $</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -97,6 +98,7 @@
                     <td>{{ $room->description }}</td>
                     <td>{{ $categories->where('id', $room->category_id)->first()->name }}</td>
                     <td>{{ $views->where('id', $room->view_id)->first()->name }}</td>
+                    <td>{{ $room->rate }}</td>
                     <td class="table-buttons">
                         <a href="{{ route('user.show', $room) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                     </td>
