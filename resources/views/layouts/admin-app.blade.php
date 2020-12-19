@@ -99,6 +99,9 @@
         $(function(){
             $('.alert-success').fadeOut(3000);
         });
+        $(function(){
+            $('.alert-danger').fadeOut(20000);
+        });
     </script>
 </body>
 </html>

@@ -147,12 +147,12 @@ Route::get(
 )->name('user.index')->middleware('user');
 
 Route::get(
-    '/user/{room}', 'App\Http\Controllers\UserController@show'
+    '/user/room/{room}', 'App\Http\Controllers\UserController@show'
 )->name('user.show')->middleware('user');
 
-/* Route::get(
-    '/user/{room}/reserve', 'App\Http\Controllers\UserController@reserve'
-)->name('user.reserve')->middleware('user'); */
+Route::post(
+    '/user/room/{room}', 'App\Http\Controllers\UserController@book'
+)->name('user.book')->middleware('user');
 
 // Balance
 Route::get(

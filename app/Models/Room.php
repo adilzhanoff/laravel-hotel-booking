@@ -21,7 +21,7 @@ class Room extends Model
             'users_rooms',
             'room_id',
             'user_id'
-        );
+        )->withPivot('start', 'finish', 'hours', 'total_price');
     }
 
     public function category(){

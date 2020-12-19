@@ -50,6 +50,6 @@ class User extends Authenticatable
             'users_rooms',
             'user_id',
             'room_id'
-        );
+        )->withPivot('start', 'finish', 'hours', 'total_price');
     }
 }

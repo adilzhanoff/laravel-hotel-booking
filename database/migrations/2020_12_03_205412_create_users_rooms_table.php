@@ -17,6 +17,10 @@ class CreateUsersRoomsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('room_id')->constrained();
+            $table->dateTime('start');
+            $table->dateTime('finish');
+            $table->integer('hours');
+            $table->integer('total_price');
             $table->timestamps();
         });
     }
