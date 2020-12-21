@@ -61,6 +61,9 @@
                                 <a class="nav-link" href="{{ route('admin.rooms.index')}}">Rooms</a>
                             </li>
                             <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('admin.bookings.index')}}">Bookings</a>
+                            </li>
+                            <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('admin.categories.index')}}">Categories</a>
                             </li>
                             <li class="nav-item active">

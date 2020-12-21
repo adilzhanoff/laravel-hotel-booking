@@ -55,6 +55,22 @@ Route::get('admin/rooms/user/{user}', [
     'as' => 'admin.rooms.user'
 ])->middleware('admin');
 
+// Bookings (users_rooms)
+Route::get('admin/bookings', [
+    'uses' => 'App\Http\Controllers\BookingController@index',
+    'as' => 'admin.bookings.index'
+])->middleware('admin');
+
+Route::get('admin/bookings/{booking}', [
+    'uses' => 'App\Http\Controllers\BookingController@show',
+    'as' => 'admin.bookings.show'
+])->middleware('admin');
+
+Route::delete('admin/bookings/{booking}', [
+    'uses' => 'App\Http\Controllers\BookingController@destroy',
+    'as' => 'admin.bookings.destroy'
+])->middleware('admin');
+
 // Categories
 Route::get(
     '/admin/categories', 'App\Http\Controllers\CategoryController@index'
