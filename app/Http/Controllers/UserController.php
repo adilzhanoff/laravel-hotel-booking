@@ -47,7 +47,7 @@ class UserController extends Controller
         $time = ceil(abs($finish - $start) / 60 / 60);
         $totalPrice = $time * $room->rate;
         // Get all rooms with $id room_id
-        $records = Room::find(1)->users->all();
+        $records = $room->users->all();
         $flags = array();
         // Check if there are no users who booked this room
         if (!empty($records)) {

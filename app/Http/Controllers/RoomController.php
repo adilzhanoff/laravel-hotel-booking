@@ -97,7 +97,11 @@ class RoomController extends Controller
         $room = Room::find($id);
         $categories = Category::all();
         $views = View::all();
-        return view('admin.rooms.show', compact(['room', 'categories', 'views']));
+        $rooms = $room->users->all();
+        return view('admin.rooms.show', compact([
+            'room', 'categories', 'views',
+            'rooms'
+        ]));
     }
 
     /**
