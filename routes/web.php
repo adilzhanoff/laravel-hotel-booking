@@ -162,6 +162,10 @@ Route::get(
     '/user', 'App\Http\Controllers\UserController@index'
 )->name('user.index')->middleware('user');
 
+Route::post(
+    '/user', 'App\Http\Controllers\UserController@filter'
+)->name('user.filter')->middleware('user');
+
 Route::get(
     '/user/room/{room}', 'App\Http\Controllers\UserController@show'
 )->name('user.show')->middleware('user');

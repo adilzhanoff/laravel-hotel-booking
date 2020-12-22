@@ -16,8 +16,115 @@ class UserController extends Controller
         $rooms = Room::all();
         $categories = Category::all();
         $views = View::all();
+
+        $min_rate = \DB::table('rooms')->min('rate');
+        $max_rate = \DB::table('rooms')->max('rate');
+        $used_categories = array();
+        $used_views = array();
+
+        foreach (Room::select('category_id')->distinct()->get()->all() as $used) {
+            array_push(
+                $used_categories,
+                [$used->category_id, Category::find($used->category_id)->name]
+            );
+        }
+        foreach (Room::select('view_id')->distinct()->get()->all() as $used) {
+            array_push(
+                $used_views,
+                [$used->view_id, View::find($used->view_id)->name]
+            );
+        }
+
         return view('user.index', compact([
             'rooms', 'categories', 'views',
+            'min_rate', 'max_rate', 'used_categories', 'used_views'
+        ]));
+    }
+
+    public function filter(Request $request) {
+
+        $filtered_categories = (
+            empty($request->category) ?
+            array_map(
+                fn($var) => $var->category_id,
+                Room::select('category_id')->distinct()->get()->all()
+            ) :
+            array_map(fn($var) => intval($var), $request->category)
+        );
+        $filtered_views = (
+            empty($request->view) ?
+            array_map(
+                fn($var) => $var->view_id,
+                Room::select('view_id')->distinct()->get()->all()
+            ) :
+            array_map(fn($var) => intval($var), $request->view)
+        );
+        $rooms = Room::where([
+            ['rate', '>=', intval($request->price_start)],
+            ['rate', '<=', intval($request->price_end)],
+            ['description', 'like', '%'.$request->search.'%']
+        ])->whereIn('category_id', array_map(
+            fn($var) => intval($var), $filtered_categories
+        ))->whereIn('view_id', array_map(
+            fn($var) => intval($var), $filtered_views
+        ))->get();
+
+        $categories = Category::all();
+        $views = View::all();
+
+        $min_rate = $request->price_start;
+        $max_rate = $request->price_end;
+        $used_categories = array();
+        $used_views = array();
+
+        foreach (Room::select('category_id')->distinct()->get()->all() as $used) {
+            array_push(
+                $used_categories,
+                [$used->category_id, Category::find($used->category_id)->name]
+            );
+        }
+        foreach (Room::select('view_id')->distinct()->get()->all() as $used) {
+            array_push(
+                $used_views,
+                [$used->view_id, View::find($used->view_id)->name]
+            );
+        }
+
+        $selected_categories = array_intersect(
+            $filtered_categories,
+            array_map(
+                fn($var) => $var[0],
+                $used_categories
+            )
+        );
+        $selected_views = array_intersect(
+            $filtered_views,
+            array_map(
+                fn($var) => $var[0],
+                $used_views
+            )
+        );
+
+        foreach ($used_categories as $key => $category) {
+            if (!empty($request->category)) {
+                if (in_array($category[0], $selected_categories)) {
+                    $used_categories[$key][2] = null;
+                }
+            }
+        }
+        foreach ($used_views as $key => $view) {
+            if (!empty($request->view)) {
+                if (in_array($view[0], $selected_views)) {
+                    $used_views[$key][2] = null;
+                }
+            }
+        }
+
+        // dd($used_categories);
+
+        return view('user.index', compact([
+            'rooms', 'categories', 'views',
+            'min_rate', 'max_rate', 'used_categories', 'used_views'
         ]));
     }
 
